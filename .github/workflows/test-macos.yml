@@ -4,7 +4,7 @@ jobs:
   test:
     runs-on: macOS-10.15
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2.3.4
     - name: test install-sdk
       run: npm config delete prefix && source ~/.nvm/nvm.sh && nvm install v12.10.0 && npm install && npm ci && npm run build
       working-directory: install-sdk
