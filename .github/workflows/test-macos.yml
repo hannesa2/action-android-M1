@@ -10,6 +10,11 @@ jobs:
     runs-on: macos-12
     steps:
     - uses: actions/checkout@v1
+    - name: set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: 11
     - name: test install-sdk
       run: npm config delete prefix && source ~/.nvm/nvm.sh && nvm install v16.15.0 && npm install && npm ci && npm run build
       working-directory: install-sdk
