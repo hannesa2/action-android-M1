@@ -20,6 +20,8 @@ jobs:
         working-directory: emulator-run-cmd
       - uses: ./install-sdk
         name: install sdk
+      - uses: check for changes
+        name: git status
 
       - run: sdkmanager platform-tools
       - name: Find Tag
