@@ -35,7 +35,7 @@ jobs:
         tag: default
         abi: x86
         cmd: adb shell getprop
-        bootTimeout: 500
+        bootTimeout: 1040
     - uses: actions/upload-artifact@v1
       with:
         name: logcat
@@ -65,7 +65,7 @@ jobs:
           tag: default
           abi: x86
           cmd: adb shell getprop
-          bootTimeout: 500
+          bootTimeout: 1040
       - uses: actions/upload-artifact@v1
         with:
           name: logcat
