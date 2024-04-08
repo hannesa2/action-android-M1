@@ -31,7 +31,7 @@ jobs:
         sudo udevadm trigger --name-match=kvm
     - uses: ./emulator-run-cmd
       with:
-        api: 25
+        api: 31
         tag: default
         abi: x86
         cmd: adb shell getprop
