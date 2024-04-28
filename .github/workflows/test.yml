@@ -5,8 +5,15 @@ on:
       - master
   pull_request:
 jobs:
-  test-ubuntu-latest:
-    runs-on: ubuntu-latest
+  test-own-Linux:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ X64 ]
+        api: [ 25 ]
+        abi: [ x86 ]
+        tag: [ 'default' ]
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -31,9 +38,9 @@ jobs:
         sudo udevadm trigger --name-match=kvm
     - uses: ./emulator-run-cmd
       with:
-        api: 25
-        tag: default
-        abi: x86
+        api: ${{ matrix.api }}
+        tag: ${{ matrix.tag }}
+        abi: ${{ matrix.abi }}
         cmd: adb shell getprop
         bootTimeout: 500
     - uses: actions/upload-artifact@v4
