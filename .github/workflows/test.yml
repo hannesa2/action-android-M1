@@ -42,7 +42,7 @@ jobs:
         tag: ${{ matrix.tag }}
         abi: ${{ matrix.abi }}
         cmd: adb shell getprop
-        bootTimeout: 500
+        bootTimeout: 1500
     - uses: actions/upload-artifact@v4
       with:
         name: logcat
