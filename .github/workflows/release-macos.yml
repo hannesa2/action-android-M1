@@ -44,7 +44,7 @@ jobs:
       - run: sdkmanager platform-tools
       - name: Find Tag
         id: tagger
-        uses: jimschubert/query-tag-action@v2
+        uses: jimschubert/query-tag-action@v2.2
         with:
           skip-unshallow: 'true'
           abbrev: false
