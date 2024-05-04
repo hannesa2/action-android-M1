@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macOS-13 ]
+        os: [ macOS-14 ]
         directory: [ install-sdk, emulator-run-cmd ]
         java_version: [ 17 ]
     steps:
