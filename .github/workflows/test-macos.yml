@@ -41,7 +41,7 @@ jobs:
 #        name: logcat
 #        path: artifacts/logcat.log
   test-macos-12:
-    runs-on: macOS-12
+    runs-on: macOS-13
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17

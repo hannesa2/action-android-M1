@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: macOS-12
+    runs-on: macOS-13
     strategy:
       fail-fast: false
       matrix:
