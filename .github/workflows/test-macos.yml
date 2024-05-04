@@ -46,8 +46,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macOS-13 ]
-        api: [ 25 ]
+        os: [ macOS-14 ]
+        api: [ 34 ]
         java_version: [ 17 ]
     steps:
       - uses: actions/checkout@v4
@@ -77,8 +77,8 @@ jobs:
       - uses: ./emulator-run-cmd
         with:
           api: ${{ matrix.api }}
-          tag: default
-          abi: x86
+          tag: google_apis
+          abi: arm64-v8a
           cmd: adb shell getprop
           bootTimeout: 500
           portNumber: 5555
