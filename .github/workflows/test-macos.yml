@@ -40,8 +40,8 @@ jobs:
 #      with:
 #        name: logcat
 #        path: artifacts/logcat.log
-  test-macos-13:
-    runs-on: macOS-13
+  test-ARM64:
+    runs-on: ARM64
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
