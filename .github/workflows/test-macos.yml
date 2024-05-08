@@ -43,6 +43,7 @@ jobs:
   test-macos:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ macOS-13 ]
         api: [ 25 ]
