@@ -48,7 +48,7 @@ export class Emulator {
             try {
                 let output = await this.execAdbCommand("shell getprop sys.boot_completed")
                 if (output.trim() == '1') {
-                    console.log("EMU Emulator booted " + (timeout - countdown) + "s")
+                    console.log("EMU Emulator booted in " + (timeout - countdown) + "s")
                     countdown = 0
                     return true
                 }
@@ -61,8 +61,7 @@ export class Emulator {
             }
 
             await sleep(1000)
-            countdown--
-            console.log("EMU Sleeping for 1s " + (timeout - countdown) + "s")
+            console.log("EMU Sleeping for 1s spent: " + (timeout - countdown) + "s")
         }
         console.log("EMU Timeout waiting for emulator to boot. Exiting")
         return false

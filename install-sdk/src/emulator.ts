@@ -61,7 +61,6 @@ export class Emulator {
             }
 
             await sleep(1000)
-            countdown--
             console.log("SDK Sleeping for 1s " + (timeout - countdown) + "s")
         }
         console.log("SDK Timeout waiting for emulator to boot. Exiting")
