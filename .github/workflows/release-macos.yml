@@ -26,6 +26,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.java_version }}
+      - name: install node
+        run: |
+          brew install node
+          brew install nvm
+          mkdir ~/.nvm
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+          [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
       - name: Prepare release
         run: ./prepare-for-release.sh
       - name: test ${{ matrix.directory }}
