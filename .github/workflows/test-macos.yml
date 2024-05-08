@@ -40,15 +40,19 @@ jobs:
 #      with:
 #        name: logcat
 #        path: artifacts/logcat.log
-  test-macos-13:
-    runs-on: macOS-13
+  test-macos:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macOS-13 ]
+        java_version: [ 17 ]
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 17
+      - name: Set up JDK ${{ matrix.java_version }}
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{ matrix.java_version }}
       - name: install node
         run: |
           brew install node
