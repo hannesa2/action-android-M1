@@ -7,11 +7,13 @@ on:
 
 jobs:
   release:
-    runs-on: macOS-13
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ macOS-13 ]
         directory: [ install-sdk, emulator-run-cmd ]
+        java_version: [ 17 ]
     steps:
       - uses: actions/checkout@v4
       - name: Install Docker
@@ -19,11 +21,11 @@ jobs:
           brew install docker docker-compose colima
           colima start
           docker run hello-world
-      - name: Set up JDK 17
+      - name: Set up JDK ${{ matrix.java_version }}
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{ matrix.java_version }}
       - name: Prepare release
         run: ./prepare-for-release.sh
       - name: test ${{ matrix.directory }}
