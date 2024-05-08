@@ -42,14 +42,14 @@ export class Emulator {
     async waitForBoot(timeout: number): Promise<boolean> {
         for (let countdown = timeout; countdown > 0; countdown--) {
             if (countdown == 0) {
-                console.error("Timeout waiting for the emulator")
+                console.error("EMU Timeout waiting for the emulator " + timeout)
                 return false
             }
             try {
                 let output = await this.execAdbCommand("shell getprop sys.boot_completed")
                 if (output.trim() == '1') {
+                    console.log("EMU Emulator booted in " + (timeout - countdown) + "s")
                     countdown = 0
-                    console.log("Emulator booted")
                     return true
                 }
             } catch (e) {
@@ -60,11 +60,10 @@ export class Emulator {
                 }
             }
 
-            console.log("Sleeping for 1s")
             await sleep(1000)
-            countdown--
+            console.log("EMU Sleeping for 1s spent: " + (timeout - countdown) + "s")
         }
-        console.log("Timeout waiting for emulator to boot. Exiting")
+        console.log("EMU Timeout waiting for emulator to boot. Exiting")
         return false
     }
 
