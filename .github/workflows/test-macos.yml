@@ -46,7 +46,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ macOS-13 ]
-        api: [ 25 ]
+        api: [ 25, 28, 31, 33, 34 ]
         java_version: [ 17 ]
     steps:
       - uses: actions/checkout@v4
