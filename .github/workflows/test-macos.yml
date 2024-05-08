@@ -45,6 +45,7 @@ jobs:
     strategy:
       matrix:
         os: [ macOS-13 ]
+        api: [ 25 ]
         java_version: [ 17 ]
     steps:
       - uses: actions/checkout@v4
@@ -73,12 +74,12 @@ jobs:
       - run: adb devices
       - uses: ./emulator-run-cmd
         with:
-          api: 25
+          api: ${{ matrix.api }}
           tag: default
           abi: x86
           cmd: adb shell getprop
           bootTimeout: 500
       - uses: actions/upload-artifact@v4
         with:
-          name: logcat
+          name: logcat-${{ matrix.os }}-${{ matrix.api }}
           path: artifacts/logcat.log
