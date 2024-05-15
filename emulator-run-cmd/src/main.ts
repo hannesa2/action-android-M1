@@ -54,6 +54,12 @@ async function run() {
             bootTimeout = '720'
         }
 
+        let portNumber = core.getInput('portNumber')
+        if (portNumber == null) {
+            portNumber = "5554"
+        } else
+            console.log(`Found portNumber=${Number(portNumber)} ${core.getInput('portNumber')}`)
+
         console.log(`Starting emulator with API=${api}, TAG=${tag} and ABI=${abi}...`)
 
         const androidHome = process.env.ANDROID_HOME
@@ -72,10 +78,10 @@ async function run() {
                 return
             }
 
-            let emulator = await sdk.createEmulator("emulator", api, tag, abi, hardwareProfile);
+            let emulator = await sdk.createEmulator("emulator", api, tag, abi, hardwareProfile, Number(portNumber));
             console.log("starting adb server")
             await sdk.startAdbServer()
-            let booted = await emulator.start(cmdOptions, +bootTimeout);
+            let booted = await emulator.start(cmdOptions, +bootTimeout, Number(portNumber));
             if (!booted) {
                 core.setFailed("emulator boot failed")
                 await emulator.stop()
