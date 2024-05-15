@@ -45,6 +45,7 @@ jobs:
           sudo npm install
           sudo npm ci
           npm run build
+          npm audit fix
         working-directory: ${{ matrix.directory }}
       - uses: ./install-sdk
         name: install sdk
