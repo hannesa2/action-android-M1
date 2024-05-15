@@ -34,6 +34,9 @@ export class Emulator {
     }
 
     async stop(): Promise<any> {
+        console.log("Show connected devices")
+        await execIgnoreFailure(`bash -c \\\"${this.sdk.androidHome()}/platform-tools/adb devices\"`)
+        console.log("emu kill start")
         await execIgnoreFailure(`bash -c \\\"${this.sdk.androidHome()}/platform-tools/adb -s emulator-${this.adbPort} emu kill\"`)
         console.log("emu kill finished")
         return
