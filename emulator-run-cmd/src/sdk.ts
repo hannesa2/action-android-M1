@@ -47,6 +47,7 @@ export abstract class BaseAndroidSdk implements AndroidSDK {
         let sdkUrl: string = url
         if (sdkUrl == null || sdkUrl == "") {
             sdkUrl = this.defaultSdkUrl
+            console.log(`Android SDK URL is not set. Using default ${this.defaultSdkUrl}`)
         }
 
         if (fs.existsSync(`${process.env.HOME}/.android`)) {
