@@ -60,7 +60,7 @@ async function run() {
         } else
             console.log(`Found portNumber=${Number(portNumber)} ${core.getInput('portNumber')}`)
 
-        console.log(`Starting emulator with API=${api}, TAG=${tag} and ABI=${abi}...`)
+        console.log(`Starting emulator with:\nAPI=${api} \nABI=${abi} \nTAG=${tag} \nVERBOSE=${verbose} \ncmd=${cmd}  \ncmdOptions=${cmdOptions} \nhardwareProfile=${hardwareProfile} \ndisableAnimations=${disableAnimations} \nbootTimeout=${bootTimeout} \nportNumber=${portNumber}\n`)
 
         const androidHome = process.env.ANDROID_HOME
         console.log(`ANDROID_HOME is ${androidHome}`)
