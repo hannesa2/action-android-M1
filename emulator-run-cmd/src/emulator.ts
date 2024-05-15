@@ -26,8 +26,8 @@ export class Emulator {
         this.telnetPort = telnetPort;
     }
 
-    async start(cmdOptions: String, bootTimeout: number): Promise<Boolean> {
-        await execIgnoreFailure(`bash -c \\\"${this.sdk.emulatorCmd()} @${this.name} ${cmdOptions} &\"`)
+    async start(cmdOptions: String, bootTimeout: number, portNumber: number): Promise<Boolean> {
+        await execIgnoreFailure(`bash -c \\\"${this.sdk.emulatorCmd()} @${this.name} ${cmdOptions} -port ${portNumber} &\"`)
         let booted = await this.waitForBoot(bootTimeout);
         console.log(`booted=${booted}`)
         return booted

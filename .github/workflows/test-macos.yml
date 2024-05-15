@@ -36,6 +36,7 @@ jobs:
 #        abi: x86
 #        cmd: adb shell getprop
 #        bootTimeout: 500
+#        portNumber: 5555
 #    - uses: actions/upload-artifact@v4
 #      with:
 #        name: logcat
@@ -80,6 +81,7 @@ jobs:
           abi: x86
           cmd: adb shell getprop
           bootTimeout: 500
+          portNumber: 5555
       - uses: actions/upload-artifact@v4
         with:
           name: logcat-${{ matrix.os }}-${{ matrix.api }}

@@ -71,6 +71,7 @@ steps:
 - `cmdOptions` is value which you can use to pass additional arguments to the emulator start command. By default this is `-no-snapshot-save -noaudio -no-boot-anim`
 - `disableAnimations` to disable animations using the system preferences. `false` by default. Keep in mind that applications might not respect system settings and these might have no effect at all 
 - `bootTimeout` is the emulator boot timeout (default is 600 seconds = 10 minutes)
+- `portNumber` is the emulator port number (default is 5554)
 - `verbose` if you want to enable additional logging for this action
 
 ### Artifacts

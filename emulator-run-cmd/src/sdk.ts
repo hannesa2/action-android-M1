@@ -25,7 +25,7 @@ export interface AndroidSDK {
 
     installPlatform(api: string, verbose: boolean): Promise<any>
 
-    createEmulator(name: string, api: string, tag: string, abi: string, hardwareProfile: string): Promise<Emulator>
+    createEmulator(name: string, api: string, tag: string, abi: string, hardwareProfile: string, portNumber: number): Promise<Emulator>
 
     listEmulators(): Promise<any>
 
@@ -47,6 +47,7 @@ export abstract class BaseAndroidSdk implements AndroidSDK {
         let sdkUrl: string = url
         if (sdkUrl == null || sdkUrl == "") {
             sdkUrl = this.defaultSdkUrl
+            console.log(`Android SDK URL is not set. Using default ${this.defaultSdkUrl}`)
         }
 
         if (fs.existsSync(`${process.env.HOME}/.android`)) {
@@ -117,14 +118,14 @@ export abstract class BaseAndroidSdk implements AndroidSDK {
         await execIgnoreFailure(`bash -c \\\"${this.androidHome()}/cmdline-tools/latest/bin/sdkmanager 'platforms;android-${api}'${args}"`)
     }
 
-    async createEmulator(name: string, api: string, tag: string, abi: string, hardwareProfile: string): Promise<any> {
+    async createEmulator(name: string, api: string, tag: string, abi: string, hardwareProfile: string, portNumber: number): Promise<any> {
         let additionalOptions = ""
         if (hardwareProfile != null && hardwareProfile != "") {
             additionalOptions += `--device ${hardwareProfile}`
         }
 
         await execIgnoreFailure(`bash -c \\\"echo -n no | ${this.androidHome()}/cmdline-tools/latest/bin/avdmanager create avd -n ${name} --force --package \\\"system-images;android-${api};${tag};${abi}\\\" --tag ${tag}\" ${additionalOptions}`)
-        return new Emulator(this, name, api, abi, tag, this.portCounter++, this.portCounter++)
+        return new Emulator(this, name, api, abi, tag, portNumber, portNumber++)
     }
 
     async verifyHardwareAcceleration(): Promise<boolean> {

@@ -26,6 +26,9 @@ inputs:
   bootTimeout:
     description: 'Boot emulator timeout (seconds)'
     default: '600'
+  portNumber:
+    description: 'emulator port number'
+    default: '5554'
   verbose:
     description: 'be verbose'
     default: 'false'
