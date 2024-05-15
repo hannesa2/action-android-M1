@@ -6,7 +6,9 @@ import * as util from "util";
 import {exec} from "@actions/exec/lib/exec";
 import {Emulator} from "./emulator";
 
-const ANDROID_TMP_PATH = "/tmp/android-sdk.zip"
+var currentTime = +new Date().valueOf();
+
+const ANDROID_TMP_PATH = "/tmp/${currentTime}-android-sdk.zip"
 
 let writeFileAsync = util.promisify(writeFile)
 
