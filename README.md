@@ -96,7 +96,7 @@ I've written the combined `emulator-run-cmd` action. If you have multiple comman
 ```
 MIT License
 
-Copyright (c) 2020 Anton Malinskiy
+Copyright (c) 2024
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

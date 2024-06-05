@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Malinskiy/action-android.git"
+    "url": "git+https://github.com/hannesa2/action-android-M1.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "Malinskiy",
+  "author": "hannesa2",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.9.1",

@@ -1,6 +1,6 @@
 name: 'Install Android SDK action'
 description: 'Install minimal Android SDK from url'
-author: 'Malinskiy'
+author: 'hannesa2'
 inputs:
   url:
     description: 'url of Android SDK zip'
