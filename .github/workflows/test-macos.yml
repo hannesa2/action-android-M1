@@ -46,8 +46,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macOS-13 ]
-        api: [ 25 ]
+        os: [ macOS-14 ]
+        api: [ 34 ]
         java_version: [ 17 ]
     steps:
       - uses: actions/checkout@v4
@@ -56,14 +56,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.java_version }}
+      - run: ./scripts/write_entitlements.sh
       - name: install node
         run: |
           brew install node
           brew install nvm
           mkdir ~/.nvm
           export NVM_DIR="$HOME/.nvm"
-          [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-          [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+          [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+          [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
       - name: test install-sdk
         run: npm config delete prefix && source ~/.nvm/nvm.sh && nvm install v20.12.1 && npm install && npm ci && npm run build
         working-directory: install-sdk
@@ -77,8 +78,8 @@ jobs:
       - uses: ./emulator-run-cmd
         with:
           api: ${{ matrix.api }}
-          tag: default
-          abi: x86
+          tag: google_apis
+          abi: arm64-v8a
           cmd: adb shell getprop
           bootTimeout: 500
           portNumber: 5555
