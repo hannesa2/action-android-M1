@@ -19,7 +19,7 @@ steps:
   - uses: actions/checkout@v1
 
   # Download & install the Android SDK.
-  - uses: hannesa2/action-android/install-sdk@release/0.1.4.10
+  - uses: hannesa2/action-android/install-sdk@release/0.1.16.7
 
   # Set up platform tools like adb.
   - run: sdkmanager platform-tools
