@@ -41,7 +41,7 @@ until it's booted. After this it will execute the provided cmd and stop the runn
 
 It's imperative(!) to use `runs-on: ubuntu-latest` with KVM enabled or `runs-on: macOS-12` if you want to have hardware acceleration for your emulator.
 
-### Enabling KVM for ubunut-latest
+### Enabling KVM for ubuntu-latest
 ```
 - name: Enable KVM
   run: |
