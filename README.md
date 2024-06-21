@@ -55,7 +55,7 @@ It's imperative(!) to use `runs-on: ubuntu-latest` with KVM enabled or `runs-on:
 ```yaml
 steps:
   - uses: actions/checkout@v1
-  - uses: hannesa2/action-android/emulator-run-cmd@release/0.1.4.10
+  - uses: hannesa2/action-android/emulator-run-cmd@release/0.1.16.7
     with:
       cmd: ./gradlew integrationTest
       api: 25
