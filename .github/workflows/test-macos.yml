@@ -14,6 +14,15 @@ jobs:
         api: [ 25 ]
         abi: [ x86 ]
         java_version: [ 17 ]
+        include:
+          - os: macOS-13
+            api: 28
+            abi: x86_64
+            java_version: 17
+          - os: macOS-13
+            api: 34
+            abi: x86_64
+            java_version: 17
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.java_version }}
