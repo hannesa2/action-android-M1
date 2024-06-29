@@ -12,6 +12,7 @@ jobs:
       matrix:
         os: [ macOS-13 ]
         api: [ 25 ]
+        abi: [ x86 ]
         java_version: [ 17 ]
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +43,7 @@ jobs:
         with:
           api: ${{ matrix.api }}
           tag: default
-          abi: x86
+          abi: ${{ matrix.abi }}
           cmd: adb shell getprop
           bootTimeout: 500
           portNumber: 5555
