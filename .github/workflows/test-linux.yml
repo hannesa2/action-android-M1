@@ -11,8 +11,16 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-22.04 ]
+        api: [ 28 ]
         java_version: [ 17 ]
     steps:
+      - name: kvm support
+        run: |
+          egrep -c '(vmx|svm)' /proc/cpuinfo
+          id
+          sudo adduser $USER kvm
+          sudo chown -R $USER /dev/kvm
+          id
       - uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.java_version }}
         uses: actions/setup-java@v4
@@ -29,3 +37,15 @@ jobs:
         name: install sdk
       - run: sdkmanager platform-tools
       - run: adb devices
+      - uses: ./emulator-run-cmd
+        with:
+          api: ${{ matrix.api }}
+          tag: default
+          abi: x86_64
+          cmd: adb shell getprop
+          bootTimeout: 500
+          portNumber: 5555
+      - uses: actions/upload-artifact@v4
+        with:
+          name: logcat-${{ matrix.os }}-${{ matrix.api }}
+          path: artifacts/logcat.log
