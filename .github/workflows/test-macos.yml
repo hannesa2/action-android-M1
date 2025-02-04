@@ -32,6 +32,7 @@ jobs:
       - name: test install-sdk
         run: |
           npm audit fix
+          npm fund
           npm config delete prefix
           source ~/.nvm/nvm.sh
           nvm install v20.12.1
@@ -42,6 +43,7 @@ jobs:
       - name: test emulator-run-cmd
         run: |
           npm audit fix
+          npm fund
           npm config delete prefix
           source ~/.nvm/nvm.sh
           nvm install v20.12.1
