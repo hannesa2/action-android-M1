@@ -1,11 +1,12 @@
-# Android action for Apple silicon M1
+# Android action for Apple silicon arm64
 
 This is a collection of GitHub Actions for Android development.
-It's working on an Apple Silicon M1 custom runner with amazing fast espresso tests.
+It's working on an Apple Silicon arm64 (and older x86) custom runner with amazing fast espresso tests.
+It's very usefull when you run on own MacOS for private repositories.
 
 # Requirements
 
-Tested with **macOS-12** and **ubuntu-latest** runner images. It might work using other runners (including self-hosted ones) but there is no support for them.
+Tested with **macOS-13** _arm64_ and _x86_ and **ubuntu-latest** runner images. It might work using other runners (including self-hosted ones).
 
 ## Android SDK
 This repo provides an action for installing the Android SDK on the build agent. It will override whatever setup is 
