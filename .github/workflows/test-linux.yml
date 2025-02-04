@@ -21,6 +21,7 @@ jobs:
           java-version: ${{ matrix.java_version }}
       - name: test install-sdk
         run: |
+          npm audit fix
           npm config delete prefix
           source ~/.nvm/nvm.sh
           nvm install v20.12.1
@@ -30,6 +31,7 @@ jobs:
         working-directory: install-sdk
       - name: test emulator-run-cmd
         run: |
+          npm audit fix
           npm config delete prefix
           source ~/.nvm/nvm.sh
           nvm install v20.12.1
