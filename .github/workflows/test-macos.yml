@@ -30,10 +30,26 @@ jobs:
           [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
           [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
       - name: test install-sdk
-        run: npm config delete prefix && source ~/.nvm/nvm.sh && nvm install v20.12.1 && npm install && npm ci && npm run build
+        run: |
+          npm audit fix
+          npm fund
+          npm config delete prefix
+          source ~/.nvm/nvm.sh
+          nvm install v20.12.1
+          npm install
+          npm ci
+          npm run build
         working-directory: install-sdk
       - name: test emulator-run-cmd
-        run: npm config delete prefix && source ~/.nvm/nvm.sh && nvm install v20.12.1 && npm install && npm ci && npm run build
+        run: |
+          npm audit fix
+          npm fund
+          npm config delete prefix
+          source ~/.nvm/nvm.sh
+          nvm install v20.12.1
+          npm install
+          npm ci
+          npm run build
         working-directory: emulator-run-cmd
       - uses: ./install-sdk
         name: install sdk
